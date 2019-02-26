@@ -1,8 +1,6 @@
 # inleksys_server
-+ Реализована серверная часть,проблем не обнаружено.
-Можно доделать,если критично:
--Не получилось реализовать упаковку в jar файл.
-
-Запуск:(Работает с postgrest версии ниже 11,обусловлено flyway)
-Скачать,поменять в модуле database-database.properties url,login,password, по умолчанию jdbc:postgresql://localhost:5433/postgres,postgres,postgres.
-В модуле database применить flyway:migrate.
+1)Скачать проект с гитхаюба
+2)Открыть папку backend через IDE-например Eclipse,idea
+3)В модуле database в папке resourse в файлах database.properties и flyway.properties поменять  url,login,password, по умолчанию: jdbc:postgresql://localhost:5433/postgres,postgres,postgres.((Работает с postgrest версии ниже 11,обусловлено flyway))
+4)Открыть терминал зайти в папку database написать mvn flyway:migrate
+5)Перейти в папку controllers,в папке java/all/controller запустить класс AppInit
