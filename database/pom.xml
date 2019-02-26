@@ -45,14 +45,11 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-maven-plugin</artifactId>
             <version>5.2.0</version>
-            <configuration>
-                <user>postgres</user>
-                <password>postgres</password>
-                <schemas>
-                    <schema>public</schema>
-                </schemas>
-                <url>jdbc:postgresql://localhost:5433/postgres</url>
-            </configuration>
+                <configuration>
+                    <configFile>
+                        src\main\resources\flyway.properties
+                    </configFile>
+                </configuration>
             </plugin>
         </plugins>
     </build>

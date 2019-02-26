@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.serviceImpl.ReaderServiceImpl;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -47,12 +48,12 @@ public class ReaderController {
         return readerList;
     }
     @PostMapping
-    public void createReader(@RequestBody Reader reader){
+    public void createReader(@Valid  @RequestBody Reader reader){
         int createCount=readerService.create(reader);
         if (createCount!=1)throw new IllegalArgumentException();
     }
     @PutMapping
-    public void updateReader(@RequestBody Reader reader){
+    public void updateReader(@Valid @RequestBody Reader reader){
       int updateCount=readerService.update(reader);
       if (updateCount<=0){
           throw new IllegalArgumentException();

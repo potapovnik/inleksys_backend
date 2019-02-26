@@ -3,6 +3,7 @@ package DAO;
 import entity.Reader;
 import mappers.ReaderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.SQLWarningException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,7 @@ public class ReaderDAO {
     private final String SQL_INSERT_READER = "insert into reader(login, password) values(?,?)";
     private final String SQL_UPDATE_READER = "update reader set login = ?, password  = ? where id = ?";
     private final String SQL_DELETE_READER = "delete from reader where id = ?";
+    private final String SQL_DELETE_BOOK = "update  book set reader_id=null where reader_id = ?";
     @Autowired
     public ReaderDAO(DataSource dataSource){
         jdbcTemplate=new JdbcTemplate(dataSource);
@@ -42,6 +44,7 @@ public class ReaderDAO {
         return jdbcTemplate.update(SQL_UPDATE_READER,reader.getLogin(),reader.getPassword(),reader.getId());
     }
     public int DeleteById(Long id){
+        jdbcTemplate.update(SQL_DELETE_BOOK,id);
         return jdbcTemplate.update(SQL_DELETE_READER,id);
 
     }

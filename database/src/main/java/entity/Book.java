@@ -1,7 +1,13 @@
 package entity;
 
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 public class Book {
+    @NotNull
+    @Positive
     private Long id;
     private String author;
     private String title;

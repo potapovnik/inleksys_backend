@@ -4,7 +4,11 @@ package entity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class Reader {
+
 
     private Long id;
     private String login;

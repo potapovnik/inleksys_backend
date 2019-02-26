@@ -6,6 +6,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import service.serviceImpl.BookServiceImpl;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @RestController
@@ -45,14 +48,14 @@ public class BookController {
         return bookList;
     }
     @PostMapping
-    public void createBook(@RequestBody Book book){
+    public void createBook(@Valid @RequestBody Book book){
         int createCount=bookService.create(book);
         if (createCount<=0){
             throw new IllegalArgumentException();
         }
     }
     @PutMapping("")
-    public void updateBook(@RequestBody Book book){
+    public void updateBook(@Valid @RequestBody Book book){
         if (book.getReader_id()!=null)
             if (book.getReader_id()==0){
                 book.setReader_id(null);

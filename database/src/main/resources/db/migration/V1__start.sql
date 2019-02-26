@@ -12,4 +12,3 @@ alter table reader owner to postgres;
 
 create unique index reader_login_uindex
 	on reader (login);
-
